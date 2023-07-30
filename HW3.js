@@ -2,14 +2,9 @@
 
 //Task1
 
-function addThemAll (a, b, ...args) {
-    let sum = a + b;
-    for (let arg of args) {
-        sum += arg;
-    }
-    return sum;
+function addThemAll(...args) {
+  return args.reduce((sum, arg) => sum + arg, 0);
 }
-
 
 console.log(addThemAll(2,4)); //6
 console.log(addThemAll(1,2,3,4)); //10
@@ -61,14 +56,9 @@ const movies = [
   function byProperty(property, direction) {
     return function (a, b) {
       if (direction === '>') {
-        if (a[property] < b[property]) return -1;
-        if (a[property] > b[property]) return 1;
-        return 0;
-      } else {
-        if (a[property] > b[property]) return -1;
-        if (a[property] < b[property]) return 1;
-        return 0;
+        return a[property] < b[property] ? -1 : 1;
       }
+      return a[property] > b[property] ? -1 : 1;
     };
   }
   
